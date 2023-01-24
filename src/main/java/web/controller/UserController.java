@@ -1,4 +1,3 @@
-
 package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import web.dao.UserDAOImpl;
 import web.model.User;
 import web.service.UserService;
 
@@ -23,7 +21,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     @GetMapping()
     public String viewUsers(Model model) {
@@ -54,23 +51,10 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public String Update(@ModelAttribute("user") @Valid User updUser, BindingResult bindingResult, @PathVariable("id") int id)  {
+    public String Update(@ModelAttribute("user") @Valid User updUser, BindingResult bindingResult, @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "redirect:/";
-//        userService.update(id, updUser);
         userService.update(updUser);
         return "redirect:/";
     }
-
-//    @PostMapping
-//    public String addUser(@RequestParam ("name") String name, @RequestParam ("surname") String surname,
-//                        @RequestParam ("email") String email, Model model){
-//        User user = new User();
-//        user.setName(name);
-//        user.setSurname(surname);
-//        user.setEmail(email);
-//        userService.addUser(user);
-//        return "redirect:/";
-//    }
-
 }

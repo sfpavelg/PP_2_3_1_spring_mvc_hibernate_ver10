@@ -29,7 +29,6 @@ public class User {
         this.age = age;
     }
 
-
     public long getId() {
         return id;
     }
@@ -71,7 +70,6 @@ public class User {
                 ", email='" + age + '\'' +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {
